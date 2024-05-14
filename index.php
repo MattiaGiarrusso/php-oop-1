@@ -1,36 +1,5 @@
 <?php
-
-class Movie {
-    public $title;
-    public $genre;
-    public $monthProgramation;
-    public static $country = 'United States';
-    public static $distribution = 'EU/GB/JP/CH'; 
-
-    function __construct($_title,$_genre,$_monthProgramation) {   
-        $this->title = $_title;
-        $this->genre = $_genre;
-        $this->monthProgramation = $_monthProgramation;
-    }
-
-    public function getStaticCountry() {
-        return self::$country;
-    }
-    
-    public function getStaticDistribution() {
-        return self::$distribution;
-    }
-}
-
-$avengers = new Movie ('Avengers','Superheroes','May');
-$djangoUnchained = new Movie ('Django Unchained', 'Western, Commedy','April');
-var_dump($avengers);
-var_dump($djangoUnchained);
-
-$movie = [
-    $avengers,
-    $djangoUnchained
-];
+require_once __DIR__. '/db.php';
 
 ?>
 
@@ -39,20 +8,25 @@ $movie = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OOP</title>
+    <title>MOVIEOOP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div>
-        <?php foreach ($movie as $movie) { ?>
-            <div>
-                <h1><?php echo $movie->title; ?></h1>
-                <div><?php echo $movie->genre; ?></div>
-                <div><?php echo $movie->monthProgramation; ?></div>
-                <div><?php echo $movie->getStaticCountry(); ?></div> 
-                <div><?php echo $movie->getStaticDistribution(); ?></div>           
-            </div>
-        <?php } ?>
-    </div>
-    
+    <header class="bg-danger h-25">
+        <div class="container">
+            <h1>MOVIEOOP</h1>
+        </div>
+    </header>
+    <main>
+        <?php include_once __DIR__. '/templates/movieList.php'; ?>
+    </main>
+    <footer class="bg-danger d-flex align-items-center position-absolute bottom-0">
+        <div class="container">
+            <h5>By Boolean co'core</h5>
+        </div>
+    </footer>    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
